@@ -29,6 +29,12 @@
         color: $primary-color-black;
     }
 
+    &__socials {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
     &__legal-text-container {
         color: $secondary-color-green;
         display: flex;

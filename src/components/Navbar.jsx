@@ -1,13 +1,14 @@
+import './Navbar.scss'
 import filter from '../assets/images/Filter.svg'
 
-export default function Header() {
+export default function Navbar() {
     return (
-        <header className="header">
-            <h1 className="header__logo">Snaps</h1>
+        <nav className="header">
+            <a className="header__logo" href="#">Snaps</a>
             <button className="header__filter-btn">
                 Filters
                 <img className="header__filter-icon" src={filter} alt="Filter icon" />
             </button>
-        </header>
+        </nav>
     )
 }

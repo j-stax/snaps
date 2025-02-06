@@ -13,3 +13,10 @@
     }
 }
 
+@mixin logo {
+    font-family: 'Newsreader';
+    font-size: 2rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: $primary-color-black;
+}

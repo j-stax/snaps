@@ -9,31 +9,8 @@ body {
     margin: 0;
     padding: 0 1rem;
     font-family: 'Outfit';
-    font-weight: 500;
+    font-weight: 400;
     font-style: normal;
     font-size: 0.75rem;
     background-color: $primary-color-pistachio;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &__logo {
-        font-size: 2rem;
-        font-weight: 400;
-    }
-
-    &__filter-btn {
-        border: 2px solid $primary-color-green;
-        border-radius: 1rem;
-        background-color: $secondary-color-white;
-        color: $primary-color-green;
-        font-weight: 600;
-        padding: 0.5rem 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
 }

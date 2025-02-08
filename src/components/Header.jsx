@@ -1,4 +1,4 @@
-import './Navbar.scss'
+import './Header.scss'
 import filterIcon from '../assets/images/Filter.svg'
 import { ReactSVG } from "react-svg"
 import { useState, useRef, useEffect } from 'react'

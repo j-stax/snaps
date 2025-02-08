@@ -1,5 +1,5 @@
 import './App.scss'
-import Navbar from './components/Navbar'
+import Header from './components/Header'
 import Hero from './components/Hero'
 import PhotoCards from './components/PhotoCards'
 import Footer from './components/Footer'
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <Navbar toggle={toggleFilters} isOpen={isFiltersOpen} />
+      <Header toggle={toggleFilters} isOpen={isFiltersOpen} />
       {isFiltersOpen && <Filters />}
       <Hero />
       <PhotoCards />

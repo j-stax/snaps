@@ -25,4 +25,14 @@
         align-items: center;
         gap: 0.5rem;
     }
+
+    &__filter-btn-hovered {
+        cursor: pointer;
+        background-color: $primary-color-green;
+        color: $secondary-color-white;
+    }
+
+    &__filter-icon-hovered {
+        fill: #FFFFFF;
+    }
 }

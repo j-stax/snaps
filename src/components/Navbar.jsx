@@ -3,7 +3,7 @@ import filterIcon from '../assets/images/Filter.svg'
 import { ReactSVG } from "react-svg"
 import { useState, useRef, useEffect } from 'react'
 
-export default function Navbar() {
+export default function Navbar({ toggle }) {
     const [isHovered, setIsHovered] = useState(false)
     const filterRef = useRef(null)
 
@@ -23,15 +23,13 @@ export default function Navbar() {
         <nav className="header">
             <a className="header__logo" href="#">Snaps</a>
             <button 
+                className={isHovered ? "header__filter-btn header__filter-btn-hovered" : "header__filter-btn"}
                 onMouseOver={handleMouseOver} 
                 onMouseOut={handleMouseOut}
-                className={isHovered ? "header__filter-btn header__filter-btn-hovered" : "header__filter-btn"}
+                onClick={toggle}
             >
                 Filters
-                <ReactSVG 
-                    src={filterIcon} 
-                    ref={filterRef}
-                />
+                <ReactSVG src={filterIcon} ref={filterRef} />
             </button>
         </nav>
     )

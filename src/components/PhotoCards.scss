@@ -33,7 +33,7 @@
     &__tags-container {
         background-color: $secondary-color-sage;
         position: relative;
-        padding: 1rem;
+        padding: 0.5rem;
         border-bottom-left-radius: 0.5rem;
         border-bottom-right-radius: 0.5rem;
         display: flex;
@@ -43,7 +43,7 @@
     &__tag {
         border-radius: 0.5rem;
         border: 1px solid $secondary-color-green;
-        padding: 0.5rem;
+        padding: 0.375rem 0.5rem;
         background-color: $secondary-color-white;
     }
 }

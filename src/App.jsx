@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <Header toggle={toggleFilters} />
-      <Filters />
+      {isFiltersOpen && <Filters />}
       <Hero />
       <PhotoCards />
       <Footer />

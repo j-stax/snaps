@@ -8,17 +8,21 @@ import pinterestIcon from '../assets/images/Pinterest.svg'
 export default function Footer() {
     return (
         <footer className="footer">
-            <a className="footer__logo" href="#">Snaps</a>
-            <div className="footer__keywords-container">
-                <span>For photographers</span>
-                <span>Hire talent</span>
-                <span>Inspiration</span>
+            <div className="footer__main">
+                <a className="footer__logo" href="#">Snaps</a>
+                <div className="footer__text-content">
+                    <div className="footer__keywords-container">
+                        <span>For photographers</span>
+                        <span>Hire talent</span>
+                        <span>Inspiration</span>
+                    </div>
+                    <nav className="footer__nav">
+                        <a className="footer__nav-link" href="">About</a>
+                        <a className="footer__nav-link" href="">Careers</a>
+                        <a className="footer__nav-link" href="">Support</a>
+                    </nav>
+                </div>
             </div>
-            <nav className="footer__nav">
-                <a className="footer__nav-link" href="">About</a>
-                <a className="footer__nav-link" href="">Careers</a>
-                <a className="footer__nav-link" href="">Support</a>
-            </nav>
             <div className="footer__socials">
                 <img src={facebookIcon} alt="Facebook icon" />
                 <img src={xIcon} alt="X/Twitter icon" />

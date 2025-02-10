@@ -1,5 +1,6 @@
 @use './styles/partials/fonts' as *;
 @use './styles/partials/variables' as *;
+@use './styles/partials/mixins' as *;
 
 * {
     box-sizing: border-box;
@@ -9,8 +10,12 @@ body {
     margin: 0;
     padding: 0 1rem;
     font-family: 'Outfit', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     font-style: normal;
     font-size: 0.75rem;
     background-color: $primary-color-pistachio;
+
+    @include tablet {
+        font-size: 1.25rem;
+    }
 }

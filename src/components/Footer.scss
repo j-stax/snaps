@@ -3,11 +3,32 @@
 
 .footer {
     padding: 1rem 0;
+    font-weight: 500;
+
+    @include tablet {
+        padding-bottom: 3rem;
+    }
+
+    &__main {
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
 
     &__logo {
         @include logo;
         display: inline-block;
         margin-bottom: 2rem;
+    }
+
+    &__text-content {
+        @include tablet {
+            display: flex;
+            gap: 4rem;
+            padding-right: 2rem;
+            margin-bottom: 10rem;
+        }
     }
 
     &__keywords-container {
@@ -33,6 +54,10 @@
         display: flex;
         gap: 1rem;
         margin-bottom: 1rem;
+
+        @include tablet {
+            margin-bottom: 2rem;
+        }
     }
 
     &__legal-text-container {

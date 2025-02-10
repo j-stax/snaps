@@ -1,5 +1,6 @@
 @use '../styles/partials/fonts' as *;
 @use '../styles/partials/variables' as *;
+@use '../styles/partials/mixins' as *;
 
 .hero {
     padding-top: 0.5rem;
@@ -14,8 +15,12 @@
         font-family: 'Newsreader';
         font-size: 1.6rem;
         font-weight: 300;
-        line-height: 2.375rem;
+        line-height: 1.5;
         margin: 1rem 0 3rem;
+
+        @include tablet {
+            font-size: 2rem;
+        }
     }
 
     &__italic {

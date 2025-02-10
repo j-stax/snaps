@@ -3,8 +3,8 @@ import './Filters.scss'
 import FilterTag from './FilterTag'
 import { useState } from 'react'
 
-export default function Filters() {
-    const [selectedTag, setSelectedTag] = useState("")
+export default function Filters({ selectedTag, setSelectedTag }) {
+    // const [selectedTag, setSelectedTag] = useState("")
 
     const handleClick = (tagElem) => {
         if (tagElem.textContent === selectedTag) {

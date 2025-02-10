@@ -10,7 +10,7 @@ const FilterIconWithRef = forwardRef((props, ref) => {
     )
 })
 
-export default function Navbar({ toggle, isOpen }) {
+export default function Header({ toggle, isOpen }) {
     const [isHovered, setIsHovered] = useState(false)
     const filterRef = useRef()
 

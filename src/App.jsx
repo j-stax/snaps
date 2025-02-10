@@ -8,6 +8,7 @@ import { useState } from "react"
 
 function App() {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false)
+  const [selectedFilterTag, setSelectedFilterTag] = useState("")
 
   function toggleFilters() {
     setIsFiltersOpen(prev => !prev)
@@ -16,9 +17,13 @@ function App() {
   return (
     <>
       <Header toggle={toggleFilters} isOpen={isFiltersOpen} />
-      {isFiltersOpen && <Filters />}
+      {isFiltersOpen && <Filters 
+          selectedTag={selectedFilterTag}
+          setSelectedTag={setSelectedFilterTag} 
+        />
+      }
       <Hero />
-      <PhotoCards />
+      <PhotoCards selectedFilterTag={selectedFilterTag} />
       <Footer />
     </>
   )

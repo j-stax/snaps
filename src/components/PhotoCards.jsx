@@ -1,7 +1,10 @@
 import photoData from '../data/photos.json'
 import './PhotoCards.scss'
 
-export default function PhotoCards() {
+export default function PhotoCards({ selectedFilterTag }) {
+
+    const filteredData = selectedFilterTag === "" ? photoData :
+        photoData.filter(photoObj => photoObj.tags.includes(selectedFilterTag))
     
     function Card({ photoObj }) {
         return (
@@ -21,7 +24,7 @@ export default function PhotoCards() {
 
     return (
         <section className="photos">
-            { photoData.map(photo => <Card key={photo.id} photoObj={photo} />) }
+            {filteredData.map(photoObj => <Card key={photoObj.id} photoObj={photoObj} />)}
         </section>
     )
 }

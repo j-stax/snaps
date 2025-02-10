@@ -1,5 +1,4 @@
 import './Header.scss'
-// import filterIcon from '../assets/images/Filter.svg'
 import FilterIcon from '../assets/images/Filter.svg?react'
 import { useState, forwardRef, useRef} from 'react'
 
@@ -27,13 +26,6 @@ export default function Navbar({ toggle, isOpen }) {
             filterRef.current.children[0].children[0]
                 .classList.remove("header__filter-icon-hovered")
         }
-    }
-
-    function handleClick() {
-        setIsHovered(true)
-        filterRef.current.reactWrapper.children[0].children[0]
-            .classList.toggle("header__filter-icon-hovered")
-        toggle()
     }
 
     return (

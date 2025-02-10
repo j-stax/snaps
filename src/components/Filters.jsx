@@ -1,20 +1,33 @@
 import tags from '../data/tags.json'
 import './Filters.scss'
+import FilterTag from './FilterTag'
+import { useState } from 'react'
 
 export default function Filters() {
-    
-    function Tag({ tag }) {
-        return (
-            <button className="filters__tag">{tag}</button>
-        )
+    const [selectedTag, setSelectedTag] = useState("")
+
+    const handleClick = (tagElem) => {
+        if (tagElem.textContent === selectedTag) {
+            setSelectedTag("")
+            tagElem.classList.remove("filters__tag--dark")
+        }
+        else {
+            setSelectedTag(tagElem.textContent)
+            tagElem.classList.add("filters__tag--dark")
+        }
     }
 
     return (
         <div className="filters">
             <h2 className="filters__heading">Filters</h2>
             <div className="filters__tags-container">
-                {tags.map((tag, index) => 
-                    <Tag key={index} tag={tag} />
+                {tags.map(tag => 
+                    <FilterTag 
+                        key={tag} 
+                        tag={tag}
+                        handleClick={handleClick} 
+                        selectedTag={selectedTag}
+                    />
                 )}
             </div>
         </div>

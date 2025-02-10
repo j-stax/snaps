@@ -32,6 +32,11 @@
         color: $secondary-color-white;
     }
 
+    &__filter-icon {
+        width: 0.9375rem;
+        height: 0.6875rem;
+    }
+
     &__filter-icon-hovered {
         fill: #FFFFFF;
     }

@@ -6,7 +6,7 @@
     font-weight: 500;
 
     @include tablet {
-        padding-bottom: 3rem;
+        padding-bottom: 2rem;
     }
 
     &__main {
@@ -20,14 +20,32 @@
         @include logo;
         display: inline-block;
         margin-bottom: 2rem;
+
+        @include tablet {
+            font-size: 2.5rem;
+        }
     }
 
-    &__text-content {
+    &__content-wrapper {
+        @include desktop {
+            display: flex;
+            gap: 7rem;
+        }
+    }
+
+    &__text-container {
+        font-size: 1rem;
+
         @include tablet {
             display: flex;
-            gap: 4rem;
+            gap: 6rem;
             padding-right: 2rem;
             margin-bottom: 10rem;
+            font-size: 1.5rem;
+        }
+
+        @include desktop {
+            gap: 6rem;
         }
     }
 
@@ -35,7 +53,7 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     &__nav {
@@ -58,11 +76,44 @@
         @include tablet {
             margin-bottom: 2rem;
         }
+
+        @include desktop {
+            display: none;
+        }
+    }
+
+    &__desktop-socials-wrapper {
+        display: none;
+
+        @include desktop {
+            display: block;
+        }
+    }
+
+    &__desktop-socials {
+        display: none;
+
+        @include desktop {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+    }
+    
+    &__desktop-socials-link {
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     &__legal-text-container {
         color: $secondary-color-green;
         display: flex;
         gap: 0.5rem;
+
+        @include tablet {
+            font-size: 1rem;
+        }
     }
 }

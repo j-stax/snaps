@@ -11,6 +11,10 @@
         gap: 1rem;
         justify-content: space-between;
     }
+
+    @include desktop {
+        margin-bottom: 5rem;
+    }
 }
 
 .card {
@@ -21,6 +25,10 @@
 
     @include tablet {
         flex: 0 1 48%;
+    }
+
+    @include desktop {
+        flex: 0 1 32%;
     }
 
     &__image-container {

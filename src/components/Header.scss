@@ -19,19 +19,19 @@
 
     &__filter-btn {
         border: 2px solid $primary-color-green;
-        border-radius: 1rem;
+        border-radius: 1.25rem;
         background-color: $secondary-color-white;
         color: $primary-color-green;
         font-size: 0.75rem;
         font-weight: 600;
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 1.25rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
 
         @include tablet {
-            padding: 0.6875rem 1.375rem;
-            font-size: 1rem;
+            padding: 0.6rem 1.75rem;
+            font-size: 0.9rem;
         }
     }
 

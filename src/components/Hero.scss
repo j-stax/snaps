@@ -3,8 +3,11 @@
 @use '../styles/partials/mixins' as *;
 
 .hero {
-    padding-top: 0.5rem;
-    margin-bottom: 3rem;
+    margin: 0.5rem 0 3rem;
+
+    @include desktop {
+        margin: 5rem 0;
+    }
 
     &__mission {
         font-family: 'Outfit';
@@ -20,6 +23,11 @@
 
         @include tablet {
             font-size: 2rem;
+        }
+
+        @include desktop {
+            width: 50%;
+            font-size: 3rem;
         }
     }
 

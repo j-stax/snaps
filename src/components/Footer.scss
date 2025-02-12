@@ -29,7 +29,7 @@
     &__content-wrapper {
         @include desktop {
             display: flex;
-            gap: 7rem;
+            gap: 6rem;
         }
     }
 
@@ -70,6 +70,7 @@
 
     &__socials {
         display: flex;
+        align-items: center;
         gap: 1rem;
         margin-bottom: 1rem;
 
@@ -95,15 +96,14 @@
 
         @include desktop {
             display: flex;
-            justify-content: center;
             align-items: center;
             gap: 1.5rem;
         }
     }
     
-    &__desktop-socials-link {
-        &:hover {
-            cursor: pointer;
+    &__desktop-socials-icon {
+        @include desktop {
+            transform: scale(1.1);
         }
     }
 

@@ -4,7 +4,6 @@ import XIcon from '../assets/images/X_twitter.svg?react'
 import IgIcon from '../assets/images/Instagram.svg?react'
 import PinterestIcon from '../assets/images/Pinterest.svg?react'
 
-
 export default function Footer() {
     return (
         <footer className="footer">
@@ -25,19 +24,35 @@ export default function Footer() {
                     </div>
                     <div className="footer__desktop-socials-wrapper">
                         <div className="footer__desktop-socials">
-                            <FacebookIcon className="footer__desktop-socials-link" />
-                            <XIcon className="footer__desktop-socials-link" />
-                            <IgIcon className="footer__desktop-socials-link" />
-                            <PinterestIcon className="footer__desktop-socials-link" />
+                            <a className="footer__desktop-socials-link" href="https://www.facebook.com/" target='_blank'>
+                                <FacebookIcon className="footer__desktop-socials-icon" />
+                            </a>
+                            <a className="footer__desktop-socials-link" href="https://www.x.com/" target='_blank'>
+                                <XIcon className="footer__desktop-socials-icon" />
+                            </a>
+                            <a className="footer__desktop-socials-link" href="https://www.instagram.com/" target='_blank'>
+                                <IgIcon className="footer__desktop-socials-icon" />
+                            </a>
+                            <a className="footer__desktop-socials-link" href="https://www.pinterest.com/" target='_blank'>
+                                <PinterestIcon className="footer__desktop-socials-icon" />
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="footer__socials">
-                <FacebookIcon />
-                <XIcon />
-                <IgIcon />
-                <PinterestIcon />
+                <a className="footer__socials-link" href="https://www.facebook.com/" target='_blank'>
+                    <FacebookIcon className="footer__socials-icon" />
+                </a>
+                <a className="footer__socials-link" href="https://www.x.com/" target='_blank'>
+                    <XIcon className="footer__socials-icon" />
+                </a>
+                <a className="footer__socials-link" href="https://www.instagram.com/" target='_blank'>
+                    <IgIcon className="footer__socials-icon" />
+                </a>
+                <a className="footer__socials-link" href="https://www.pinterest.com/" target='_blank'>
+                    <PinterestIcon className="footer__socials-icon" />
+                </a>
             </div>
             <div className="footer__legal-text-container">
                 <span>&copy; 2024 Snaps</span>

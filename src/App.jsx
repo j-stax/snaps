@@ -23,7 +23,10 @@ function App() {
         />
       }
       <Hero />
-      <PhotoCards selectedFilterTag={selectedFilterTag} />
+      <PhotoCards 
+        isOpen={isFiltersOpen}
+        selectedFilterTag={selectedFilterTag} 
+      />
       <Footer />
     </>
   )

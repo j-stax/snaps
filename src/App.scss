@@ -20,6 +20,7 @@ body {
     }
 
     @include desktop {
-        padding: 1rem 2rem;
+        padding: 1rem 1.5rem;
+        overflow-x: hidden;
     }
 }

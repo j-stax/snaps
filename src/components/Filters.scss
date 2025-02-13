@@ -10,10 +10,22 @@
         padding: 2rem 1rem 4rem;
     }
 
+    @include desktop {
+        position: absolute;
+        right: 0;
+        width: 35%;
+        height: 320rem;
+        padding: 3rem 3.25rem 2rem 3.5rem;
+    }
+
     &__heading {
         font-size: 1.625rem;
         font-weight: 400;
         margin: 0 0 1rem;
+
+        @include desktop {
+            margin-bottom: 3rem;
+        }
     }
 
     &__tags-container {
@@ -32,6 +44,11 @@
 
         @include tablet {
             padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+        }
+
+        @include desktop {
+            margin-bottom: 0.25rem;
         }
 
         &--dark {

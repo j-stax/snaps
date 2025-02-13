@@ -17,6 +17,12 @@
     }
 }
 
+.photos-desktop {
+    width: 65%;
+    margin-bottom: 7rem;
+
+}
+
 .card {
     border: 1px solid $secondary-color-green;
     border-radius: 0.5rem;
@@ -72,4 +78,8 @@
             padding: 0.5rem 0.75rem;
         }
     }
+}
+
+.card-desktop {
+    flex-basis: 48%;
 }

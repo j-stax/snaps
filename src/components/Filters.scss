@@ -7,7 +7,7 @@
     padding: 1rem 1rem 1.25rem;
 
     @include tablet {
-        padding: 2rem 1rem 4rem;
+        padding: 2rem 1rem 5rem;
     }
 
     @include desktop {
@@ -22,6 +22,10 @@
         font-size: 1.625rem;
         font-weight: 400;
         margin: 0 0 1rem;
+
+        @include tablet {
+            margin-bottom: 2rem;
+        }
 
         @include desktop {
             margin-bottom: 3rem;

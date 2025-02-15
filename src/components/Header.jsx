@@ -11,6 +11,7 @@ const FilterIconWithRef = forwardRef((props, ref) => {
     )
 })
 
+// Header component
 export default function Header({ toggle, isOpen }) {
     const [isHovered, setIsHovered] = useState(false)
     const filterRef = useRef(null)
@@ -31,11 +32,13 @@ export default function Header({ toggle, isOpen }) {
         }
     }
 
+    const buttonStyles= isHovered ? "header__filter-btn header__filter-btn-hovered" : "header__filter-btn"
+
     return (
         <nav className="header">
             <a className="header__logo" href="#">Snaps</a>
             <button 
-                className={isHovered ? "header__filter-btn header__filter-btn-hovered" : "header__filter-btn"}
+                className={buttonStyles}
                 onMouseOver={handleMouseOver} 
                 onMouseOut={handleMouseOut}
                 onClick={toggle}

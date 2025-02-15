@@ -9,8 +9,8 @@ export default function PhotoCards({ isOpen, selectedFilterTag }) {
     const filteredData = selectedFilterTag === "" ? photoData :
         photoData.filter(photoObj => photoObj.tags.includes(selectedFilterTag))
 
-    // Apply or remove desktop-specific styling the photos section upon 
-    // rerender, or a change in state for filter or the screen width
+    // Apply or remove desktop-specific styling for the photos section upon rerender,
+    // if filter button is clicked, or the screen is in desktop view
     useEffect(() => {
         if (screenWidth >= 1280 && isOpen) {
             document.querySelector(".photos").classList.add("photos-desktop")

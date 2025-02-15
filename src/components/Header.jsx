@@ -13,7 +13,7 @@ const FilterIconWithRef = forwardRef((props, ref) => {
 
 export default function Header({ toggle, isOpen }) {
     const [isHovered, setIsHovered] = useState(false)
-    const filterRef = useRef()
+    const filterRef = useRef(null)
 
     function handleMouseOver() {
         setIsHovered(true)

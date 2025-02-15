@@ -80,17 +80,20 @@
     &__socials {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 2.25rem;
         margin-bottom: 1rem;
 
         @include tablet {
-            gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
         @include desktop {
             display: none;
         }
+    }
+
+    &__socials-icon {
+        transform: scale(1.4);
     }
 
     &__desktop-socials-wrapper {

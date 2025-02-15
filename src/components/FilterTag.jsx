@@ -9,11 +9,13 @@ export default function FilterTag({ tag, handleClick, selectedTag }) {
         if (event.target.textContent !== selectedTag) {
             event.target.classList.remove("filters__tag--dark")
         }
-    } 
+    }
+    
+    const buttonStyles = tag === selectedTag ? "filters__tag filters__tag--dark" : "filters__tag"
 
     return (
         <button 
-            className={`filters__tag${tag === selectedTag ? " filters__tag--dark" : ""}`}
+            className={buttonStyles}
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
             onClick={(e) => handleClick(e.target)}

@@ -1,5 +1,6 @@
 @use './styles/partials/fonts' as *;
 @use './styles/partials/variables' as *;
+@use './styles/partials/mixins' as *;
 
 * {
     box-sizing: border-box;
@@ -8,32 +9,18 @@
 body {
     margin: 0;
     padding: 0 1rem;
-    font-family: 'Outfit';
-    font-weight: 500;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
     font-style: normal;
     font-size: 0.75rem;
     background-color: $primary-color-pistachio;
-}
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &__logo {
-        font-size: 2rem;
-        font-weight: 400;
+    @include tablet {
+        font-size: 1.25rem;
     }
 
-    &__filter-btn {
-        border: 2px solid $primary-color-green;
-        border-radius: 1rem;
-        background-color: $secondary-color-white;
-        color: $primary-color-green;
-        font-weight: 600;
-        padding: 0.5rem 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+    @include desktop {
+        padding: 1rem 1.5rem;
+        overflow-x: hidden;
     }
 }

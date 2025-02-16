@@ -1,0 +1,132 @@
+@use '../styles/partials/variables' as *;
+@use '../styles/partials/mixins' as *;
+
+.footer {
+    padding: 1rem 0;
+    font-weight: 500;
+
+    @include tablet {
+        padding-bottom: 2rem;
+    }
+
+    &__main {
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 14rem;
+        }
+    }
+
+    &__logo {
+        @include logo;
+        display: inline-block;
+        margin-bottom: 2rem;
+
+        @include tablet {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+    }
+
+    &__content-wrapper {
+        @include desktop {
+            display: flex;
+            gap: 6rem;
+        }
+    }
+
+    &__text-container {
+        font-size: 1rem;
+
+        @include tablet {
+            display: flex;
+            gap: 5rem;
+            padding-right: 2rem;
+            font-size: 1.5rem;
+        }
+
+        @include desktop {
+            gap: 6rem;
+        }
+    }
+
+    &__keywords-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+
+        @include tablet {
+            margin: 0;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+
+        @include tablet {
+            margin: 0;
+        }
+    }
+
+    &__nav-link {
+        text-decoration: none;
+        color: $primary-color-black;
+    }
+
+    &__socials {
+        display: flex;
+        align-items: center;
+        gap: 2.25rem;
+        margin-bottom: 1rem;
+
+        @include tablet {
+            margin-bottom: 2rem;
+        }
+
+        @include desktop {
+            display: none;
+        }
+    }
+
+    &__socials-icon {
+        transform: scale(1.4);
+    }
+
+    &__desktop-socials-wrapper {
+        display: none;
+
+        @include desktop {
+            display: block;
+        }
+    }
+
+    &__desktop-socials {
+        display: none;
+
+        @include desktop {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+    }
+    
+    &__desktop-socials-icon {
+        @include desktop {
+            transform: scale(1.1);
+        }
+    }
+
+    &__legal-text-container {
+        color: $secondary-color-green;
+        display: flex;
+        gap: 0.5rem;
+
+        @include tablet {
+            font-size: 1rem;
+        }
+    }
+}

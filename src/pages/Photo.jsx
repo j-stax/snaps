@@ -1,17 +1,58 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import photoData from '../data/photos.json'
 import './Photo.scss'
+import Arrow from '../assets/images/Arrow.svg?react'
+import LikeOutline from '../assets/images/Like_Outline.svg?react'
+
+const dateMap = {
+    0: "01",
+    1: "02",
+    2: "03",
+    3: "04",
+    4: "05",
+    5: "06",
+    6: "07",
+    7: "08",
+    8: "09",
+    9: "10",
+    10: "11",
+    11: "12",
+}
 
 export default function Photo() {
     const { id } = useParams()
 
     const photoObj = photoData.find(photo => photo.id === id)
-    console.log(photoObj)
+    const tags = photoObj.tags.map((tag, index) => <span key={index} className="photo__tag">{tag}</span>)
+    let date = new Date(photoObj.timestamp)
+    date = `${dateMap[date.getMonth()]}\/${date.getDate()}\/${date.getFullYear()}`
 
     return (
         <div className="photo">
-            <Link to="/" className="photo__logo">Snaps</Link>
-            {/* <img src={photoObj.photo} alt={photoObj.photoDescription} /> */}
+            <header className="photo__header">
+                <Link to="/" className="photo__logo">Snaps</Link>
+                <Link to="/" className="photo__return-link">
+                    <Arrow className="photo__arrow" />
+                    Home
+                </Link>
+            </header>
+            <main>
+                <div className="photo__component">
+                    <img className="photo__image" src={photoObj.photo} alt={photoObj.photoDescription} />
+                    <div className="photo__component-content">
+                        <div className="photo__tags-container">
+                            {tags}
+                        </div>
+                        <div className="photo__component-content-main">
+                            <div className="photo__likes">
+                                <LikeOutline className="photo__likes-icon" />
+                                <span className="photo__likes-text">{photoObj.likes} likes</span>
+                            </div>
+                            <span>{date}</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
     )
 }

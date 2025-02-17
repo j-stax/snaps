@@ -1,8 +1,9 @@
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import photoData from '../data/photos.json'
 import './Photo.scss'
-import Arrow from '../assets/images/Arrow.svg?react'
 import LikeOutline from '../assets/images/Like_Outline.svg?react'
+import PagesHeader from '../components/PagesHeader'
+import CommentForm from '../components/CommentForm'
 
 const dateMap = {
     0: "01",
@@ -29,13 +30,7 @@ export default function Photo() {
 
     return (
         <div className="photo">
-            <header className="photo__header">
-                <Link to="/" className="photo__logo">Snaps</Link>
-                <Link to="/" className="photo__return-link">
-                    <Arrow className="photo__arrow" />
-                    Home
-                </Link>
-            </header>
+            <PagesHeader />
             <main>
                 <div className="photo__component">
                     <img className="photo__image" src={photoObj.photo} alt={photoObj.photoDescription} />
@@ -50,8 +45,10 @@ export default function Photo() {
                             </div>
                             <span>{date}</span>
                         </div>
+                        <span className="photo__photographer">Photo by {photoObj.photographer}</span>
                     </div>
                 </div>
+                <CommentForm />
             </main>
         </div>
     )

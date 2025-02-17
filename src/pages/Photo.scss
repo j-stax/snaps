@@ -1,0 +1,10 @@
+@use '../styles/partials/mixins' as *;
+
+
+.photo {
+    padding: 2rem 1rem;
+
+    &__logo {
+        @include logo;
+    }
+}

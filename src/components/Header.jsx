@@ -1,6 +1,7 @@
 import './Header.scss'
 import FilterIcon from '../assets/images/Filter.svg?react'
 import { useState, forwardRef, useRef} from 'react'
+import { Link } from 'react-router-dom'
 
 // Wrap the FilterIcon to be able to manipulate its properties on events
 const FilterIconWithRef = forwardRef((props, ref) => {
@@ -36,7 +37,7 @@ export default function Header({ toggle, isOpen }) {
 
     return (
         <nav className="header">
-            <a className="header__logo" href="#">Snaps</a>
+            <Link className="header__logo" to="/" >Snaps</Link>
             <button 
                 className={buttonStyles}
                 onMouseOver={handleMouseOver} 

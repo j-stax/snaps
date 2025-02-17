@@ -1,6 +1,7 @@
 import photoData from '../data/photos.json'
 import './PhotoCards.scss'
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function PhotoCards({ isOpen, selectedFilterTag }) {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
@@ -34,7 +35,7 @@ export default function PhotoCards({ isOpen, selectedFilterTag }) {
         const cardStyles = screenWidth >= 1280 && isOpen ? "card card-desktop" : "card"
 
         return (
-            <div className={cardStyles}>
+            <Link to={`/photo/${photoObj.id}`} className={cardStyles}>
                 <div className="card__image-container">
                     <img className="card__image" src={photoObj.photo} alt={photoObj.photoDescription} />
                     <span className="card__photographer">{photoObj.photographer}</span>
@@ -44,13 +45,15 @@ export default function PhotoCards({ isOpen, selectedFilterTag }) {
                         <span key={index} className="card__tag">{tag}</span> 
                     )}
                 </div>
-            </div>
+            </Link>
         )
     }
 
     return (
         <section ref={photosRef} className="photos">
-            {filteredData.map(photoObj => <Card key={photoObj.id} photoObj={photoObj} />)}
+            {filteredData.map(photoObj => 
+                <Card key={photoObj.id} photoObj={photoObj} />
+            )}
         </section>
     )
 }

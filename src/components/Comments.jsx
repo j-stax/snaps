@@ -3,9 +3,14 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
-export default function Comments() {
+export default function Comments({ photoId }) {
     const [comments, setComments] = useState([])
-    const { id } = useParams()
+
+    useEffect(() => {
+        const fetchComment = async () => {
+
+        }
+    })
 
     function CommentComponent() {
         return (

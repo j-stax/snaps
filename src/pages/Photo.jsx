@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import photoData from '../data/photos.json'
 import './Photo.scss'
 import LikeOutline from '../assets/images/Like_Outline.svg?react'
@@ -6,6 +7,7 @@ import PagesHeader from '../components/PagesHeader'
 import CommentForm from '../components/CommentForm'
 import Comments from '../components/Comments'
 import Footer from '../components/Footer'
+import axios from 'axios'
 
 const dateMap = {
     0: "01",
@@ -22,8 +24,23 @@ const dateMap = {
     11: "12",
 }
 
-export default function Photo() {
+export default function Photo({ apiKey }) {
+    // const [photo, setPhoto] = useState({})
     const { id } = useParams()
+
+    useEffect(() => {
+        const fetchPhoto = async () => {
+            try {
+                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}?api_key=${apiKey}`)
+                console.log(response)
+                // TODO: SET PHOTO TO RESPONSE DATA
+            } catch (err) {
+                console.log(`Error fetching photo ${id}: ${err}`)
+            }    
+        }
+
+        fetchPhoto()
+    }, [id])
 
     const photoObj = photoData.find(photo => photo.id === id)
     const tags = photoObj.tags.map((tag, index) => <span key={index} className="photo__tag">{tag}</span>)
@@ -51,7 +68,7 @@ export default function Photo() {
                     </div>
                 </div>
                 <CommentForm />
-                <Comments />
+                <Comments photoId={id} />
             </main>
             <Footer />
         </div>

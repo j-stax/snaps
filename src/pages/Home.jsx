@@ -9,8 +9,6 @@ export default function Home({ apiKey }) {
     const [isFiltersOpen, setIsFiltersOpen] = useState(false)
     const [selectedFilterTag, setSelectedFilterTag] = useState("")
 
-    console.log(apiKey)
-
     function toggleFilters() {
         setIsFiltersOpen(prev => !prev)
     }

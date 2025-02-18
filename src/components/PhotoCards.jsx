@@ -7,9 +7,7 @@ import axios from 'axios'
 export default function PhotoCards({ isOpen, selectedFilterTag, apiKey }) {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
     const [photos, setPhotos] = useState([])
-    const photosRef = useRef(null)
-
-    console.log(`apiKey: ${apiKey}`)
+    const photosRef = useRef(null)  
 
     useEffect(() => {
         const fetchPhotos = async () => {
@@ -24,11 +22,11 @@ export default function PhotoCards({ isOpen, selectedFilterTag, apiKey }) {
         }
 
         fetchPhotos()
-    }, [apiKey])
+    }, [])
 
     // Filter the photo data if a filter selection has been made.
-    const filteredData = selectedFilterTag === "" ? photoData :
-        photoData.filter(photoObj => photoObj.tags.includes(selectedFilterTag))
+    const filteredData = selectedFilterTag === "" ? photos :
+        photos.filter(photoObj => photoObj.tags.includes(selectedFilterTag))
 
 
     window.addEventListener('resize', () => setScreenWidth(window.innerWidth))

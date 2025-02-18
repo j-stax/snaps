@@ -28,8 +28,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home apiKey={apiKey} />} />
-        <Route path="/photo/:id" element={<Photo />} />
+        <Route path="/" element={apiKey && <Home apiKey={apiKey} />} />
+        <Route path="/photo/:id" element={<Photo apiKey={apiKey} />} />
       </Routes>
     </BrowserRouter>
   )

@@ -1,8 +1,11 @@
 import './Comments.scss'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Comments() {
-
-    // TODO: PLUG IN API
+    const [comments, setComments] = useState([])
+    const { id } = useParams()
 
     function CommentComponent() {
         return (
@@ -20,6 +23,7 @@ export default function Comments() {
     return (
         <section className="comments">
             <span className="comments__title">3 Comments</span>
+            {/* Map over list of comments */}
             {CommentComponent()}
             {CommentComponent()}
         </section>

@@ -5,6 +5,7 @@ import LikeOutline from '../assets/images/Like_Outline.svg?react'
 import PagesHeader from '../components/PagesHeader'
 import CommentForm from '../components/CommentForm'
 import Comments from '../components/Comments'
+import Footer from '../components/Footer'
 
 const dateMap = {
     0: "01",
@@ -52,6 +53,7 @@ export default function Photo() {
                 <CommentForm />
                 <Comments />
             </main>
+            <Footer />
         </div>
     )
 }

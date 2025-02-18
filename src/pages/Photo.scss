@@ -16,6 +16,9 @@
 
     &__component-content {
         padding: 1.25rem;
+        background-color: $secondary-color-sage;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
     }
 
     &__tags-container {

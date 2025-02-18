@@ -2,33 +2,38 @@ import photoData from '../data/photos.json'
 import './PhotoCards.scss'
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
-export default function PhotoCards({ isOpen, selectedFilterTag }) {
+export default function PhotoCards({ isOpen, selectedFilterTag, apiKey }) {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const [photos, setPhotos] = useState([])
     const photosRef = useRef(null)
+
+    console.log(`apiKey: ${apiKey}`)
+
+    useEffect(() => {
+        const fetchPhotos = async () => {
+            try {
+                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos?api_key=${apiKey}`)
+                if (response.status == 200) {
+                    setPhotos(await response.data)
+                }
+            } catch (err) {
+                console.log(`Error fetching photos data: ${err}`)
+            }
+        }
+
+        fetchPhotos()
+    }, [apiKey])
 
     // Filter the photo data if a filter selection has been made.
     const filteredData = selectedFilterTag === "" ? photoData :
         photoData.filter(photoObj => photoObj.tags.includes(selectedFilterTag))
 
-    // Apply or remove desktop-specific styling for the photos section upon rerender,
-    // if filter button is clicked, or the screen is in desktop view
-    useEffect(() => {
-        if (screenWidth >= 1280 && isOpen) {
-            photosRef.current.classList.add("photos-desktop")
-            document.querySelectorAll(".card").forEach(card => {
-                card.classList.add("card-desktop")
-            })
-        }
-        if (!isOpen || (screenWidth < 1280 && isOpen)) {
-            photosRef.current.classList.remove("photos-desktop")
-            document.querySelectorAll(".card").forEach(card => {
-                card.classList.remove("card-desktop")
-            })
-        }
-    }, [isOpen, screenWidth]) 
 
     window.addEventListener('resize', () => setScreenWidth(window.innerWidth))
+
+    const photosStyles = screenWidth >= 1280 && isOpen ? "photos photos-desktop" : "photos"
     
     // Card component
     function Card({ photoObj }) {
@@ -50,7 +55,7 @@ export default function PhotoCards({ isOpen, selectedFilterTag }) {
     }
 
     return (
-        <section ref={photosRef} className="photos">
+        <section ref={photosRef} className={photosStyles}>
             {filteredData.map(photoObj => 
                 <Card key={photoObj.id} photoObj={photoObj} />
             )}

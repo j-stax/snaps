@@ -5,9 +5,11 @@ import PhotoCards from '../components/PhotoCards'
 import Footer from '../components/Footer'
 import { useState } from 'react'
 
-export default function Home() {
+export default function Home({ apiKey }) {
     const [isFiltersOpen, setIsFiltersOpen] = useState(false)
     const [selectedFilterTag, setSelectedFilterTag] = useState("")
+
+    console.log(apiKey)
 
     function toggleFilters() {
         setIsFiltersOpen(prev => !prev)
@@ -25,6 +27,7 @@ export default function Home() {
             <PhotoCards 
                 isOpen={isFiltersOpen}
                 selectedFilterTag={selectedFilterTag} 
+                apiKey={apiKey}
             />
             <Footer />
         </>

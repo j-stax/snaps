@@ -4,6 +4,7 @@
 .form {
     font-size: 1rem;
     font-weight: 500;
+    margin-bottom: 2rem;
 
     &__label {
         display: block;
@@ -29,6 +30,7 @@
         width: 100%;
         resize: none;
         @include formfield;
+        margin-bottom: 1rem;
 
         @include tablet {
             padding: 0.5rem 1rem;
@@ -37,5 +39,16 @@
         &:focus {
             border: 2px solid $primary-color-green;
         }
+    }
+
+    &__button {
+        background-color: $primary-color-green;
+        color: $secondary-color-white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        display: block;
+        margin-left: auto;
     }
 }

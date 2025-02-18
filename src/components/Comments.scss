@@ -1,0 +1,22 @@
+@use '../styles/partials/variables' as *;
+
+.comments {
+    font-size: 1rem;
+    font-weight: 500;
+
+    &__ruler {
+        border: 1px solid $secondary-color-green;
+        margin-block: 1rem;
+    }
+
+    &__component-header {
+        font-size: 0.75rem;
+        color: $primary-color-green;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__comment {
+        margin-bottom: 1rem;
+    }
+}

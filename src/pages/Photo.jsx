@@ -25,15 +25,17 @@ const dateMap = {
 }
 
 export default function Photo({ apiKey }) {
-    // const [photo, setPhoto] = useState({})
+    const [photo, setPhoto] = useState({})
     const { id } = useParams()
 
     useEffect(() => {
         const fetchPhoto = async () => {
             try {
                 const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}?api_key=${apiKey}`)
-                console.log(response)
-                // TODO: SET PHOTO TO RESPONSE DATA
+                if (response.status == 200) {
+                    setPhoto(response.data)
+                }
+                
             } catch (err) {
                 console.log(`Error fetching photo ${id}: ${err}`)
             }    
@@ -42,35 +44,40 @@ export default function Photo({ apiKey }) {
         fetchPhoto()
     }, [id])
 
-    const photoObj = photoData.find(photo => photo.id === id)
-    const tags = photoObj.tags.map((tag, index) => <span key={index} className="photo__tag">{tag}</span>)
-    let date = new Date(photoObj.timestamp)
-    date = `${dateMap[date.getMonth()]}\/${date.getDate()}\/${date.getFullYear()}`
+    // const photoObj = photoData.find(photo => photo.id === id)
+    // const tags = photo.tags.map((tag, index) => <span key={index} className="photo__tag">{tag}</span>)
+    function timestampToDate(timestamp) { 
+        const date = new Date(timestamp)
+        return `${dateMap[date.getMonth()]}\/${date.getDate()}\/${date.getFullYear()}`
+    }
 
     return (
-        <div className="photo">
-            <PagesHeader />
-            <main>
-                <div className="photo__component">
-                    <img className="photo__image" src={photoObj.photo} alt={photoObj.photoDescription} />
-                    <div className="photo__component-content">
-                        <div className="photo__tags-container">
-                            {tags}
-                        </div>
-                        <div className="photo__component-content-main">
-                            <div className="photo__likes">
-                                <LikeOutline className="photo__likes-icon" />
-                                <span className="photo__likes-text">{photoObj.likes} likes</span>
+        <>
+            {photo && <div className="photo">
+                <PagesHeader />
+                <main>
+                    <div className="photo__component">
+                        <img className="photo__image" src={photo.photo} alt={photo.photoDescription} />
+                        <div className="photo__component-content">
+                            <div className="photo__tags-container">
+                                {photo.tags && photo.tags.map((tag, index) => 
+                                    <span key={index} className="photo__tag">{tag}</span>)}
                             </div>
-                            <span>{date}</span>
+                            <div className="photo__component-content-main">
+                                <div className="photo__likes">
+                                    <LikeOutline className="photo__likes-icon" />
+                                    <span className="photo__likes-text">{photo.likes} likes</span>
+                                </div>
+                                <span>{timestampToDate(photo.timestamp)}</span>
+                            </div>
+                            <span className="photo__photographer">Photo by {photo.photographer}</span>
                         </div>
-                        <span className="photo__photographer">Photo by {photoObj.photographer}</span>
                     </div>
-                </div>
-                <CommentForm />
-                <Comments photoId={id} />
-            </main>
-            <Footer />
-        </div>
+                    <CommentForm />
+                    <Comments photoId={id} apiKey={apiKey} timestampToDate={timestampToDate} />
+                </main>
+                <Footer /> 
+            </div>}
+        </>
     )
 }

@@ -14,7 +14,7 @@ export default function PhotoCards({ isOpen, selectedFilterTag, apiKey }) {
             try {
                 const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos?api_key=${apiKey}`)
                 if (response.status == 200) {
-                    setPhotos(await response.data)
+                    setPhotos(response.data)
                 }
             } catch (err) {
                 console.log(`Error fetching photos data: ${err}`)

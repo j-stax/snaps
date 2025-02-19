@@ -1,36 +1,45 @@
 import './Comments.scss'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
-export default function Comments({ photoId }) {
+export default function Comments({ photoId, apiKey, timestampToDate }) {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-        const fetchComment = async () => {
-
+        const fetchComments = async () => {
+            try {
+                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${photoId}/comments?api_key=${apiKey}`)
+                setComments(response.data)
+            } catch (err) {
+                console.log(`Error fetching comments: ${err}`)
+            }
         }
-    })
 
-    function CommentComponent() {
+        fetchComments()
+    }, [photoId])
+
+
+    function CommentComponent({ comment }) {
         return (
             <div>
                 <hr className="comments__ruler" />
                 <div className="comments__component-header">
-                    <span>Casey Schmidt</span>
-                    <span>08/29/2024</span>
+                    <span>{comment.name}</span>
+                    <span>{timestampToDate(comment.timestamp)}</span>
                 </div>
-                <p className="comments__comment">The mood and atmosphere in this shot are beautiful.</p>
+                <p className="comments__comment">{comment.comment}</p>
             </div>
         )
     }
 
     return (
-        <section className="comments">
-            <span className="comments__title">3 Comments</span>
-            {/* Map over list of comments */}
-            {CommentComponent()}
-            {CommentComponent()}
-        </section>
+        <>
+            {comments && <section className="comments">
+                <span className="comments__title">
+                    {comments.length == 1 ? "1 Comment" : `${comments.length} Comments`}
+                </span>
+                {comments.map(comment => <CommentComponent key={comment.id} comment={comment} />)}
+            </section>}
+        </>
     )
 }

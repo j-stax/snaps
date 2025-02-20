@@ -1,21 +1,36 @@
 import './CommentForm.scss'
+import axios from 'axios'
 
-export default function CommentForm() {
+export default function CommentForm({ photoId, apiKey }) {
 
-    function handleSubmit(event) {
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        const name = event.target.name.value.trim()
-        const comment = event.target.comment.value.trim()
-        console.log(name, comment)
+        const formElem = event.target
+        const name = formElem.name.value.trim()
+        const comment = formElem.comment.value.trim()
+        if (name.length > 0 && comment.length > 0) {
+            const newComment = {
+                name,
+                comment,
+            }
+            const url = `https://unit-3-project-c5faaab51857.herokuapp.com/photos/${photoId}/comments?api_key=${apiKey}`
+            const response = await axios.post(url, newComment)
+            console.log(response)
+            formElem.reset()
+        }
+
+        // TODO!!! USE API TO POST NEW COMMENTS AND DISPLAY ALL COMMENTS
     }
 
     return (
         <form className="form" onSubmit={handleSubmit} method="POST">
-            <label className="form__label">Name</label>
-            <input className="form__input-name" type="text" name="name" />
-            <label className="form__label">Comment</label>
+            <label className="form__label">Name
+                <input className="form__input-name" type="text" name="name" />
+            </label>
+            <label className="form__label" htmlFor="comment">Comment</label>
             <textarea 
                 className="form__input-comment" 
+                id="comment"
                 type="text" 
                 name="comment"
                 rows="4"

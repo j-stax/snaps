@@ -74,7 +74,7 @@ export default function Photo({ apiKey }) {
                             <span className="photo__photographer">Photo by {photo.photographer}</span>
                         </div>
                     </div>
-                    <CommentForm />
+                    <CommentForm photoId={id} apiKey={apiKey} />
                     <Comments photoId={id} apiKey={apiKey} timestampToDate={timestampToDate} />
                 </main>
                 <Footer /> 

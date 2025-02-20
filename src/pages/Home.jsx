@@ -19,6 +19,7 @@ export default function Home({ apiKey }) {
             {isFiltersOpen && <Filters 
                 selectedTag={selectedFilterTag}
                 setSelectedTag={setSelectedFilterTag} 
+                apiKey={apiKey}
             />
             }
             <Hero />

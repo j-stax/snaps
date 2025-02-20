@@ -34,8 +34,9 @@ export default function Photo({ apiKey }) {
                 const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}?api_key=${apiKey}`)
                 if (response.status == 200) {
                     setPhoto(response.data)
+                } else {
+                    console.log(`Fetching photo status: ${response.status}`)
                 }
-                
             } catch (err) {
                 console.log(`Error fetching photo ${id}: ${err}`)
             }    

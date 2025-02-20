@@ -9,7 +9,11 @@ export default function Comments({ photoId, apiKey, timestampToDate }) {
         const fetchComments = async () => {
             try {
                 const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${photoId}/comments?api_key=${apiKey}`)
-                setComments(response.data)
+                if (response.status == 200) {
+                    setComments(response.data)
+                } else {
+                    console.log(`Fetching comments status: ${response.status}`)
+                }
             } catch (err) {
                 console.log(`Error fetching comments: ${err}`)
             }

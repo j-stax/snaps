@@ -2,23 +2,10 @@ import './Comments.scss'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-export default function Comments({ photoId, apiKey, timestampToDate }) {
-    const [comments, setComments] = useState([])
+export default function Comments({ photoId, timestampToDate, fetchComments, comments }) {
+    // const [comments, setComments] = useState([])
 
     useEffect(() => {
-        const fetchComments = async () => {
-            try {
-                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${photoId}/comments?api_key=${apiKey}`)
-                if (response.status == 200) {
-                    setComments(response.data)
-                } else {
-                    console.log(`Fetching comments status: ${response.status}`)
-                }
-            } catch (err) {
-                console.log(`Error fetching comments: ${err}`)
-            }
-        }
-
         fetchComments()
     }, [photoId])
 

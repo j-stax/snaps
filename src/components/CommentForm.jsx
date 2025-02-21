@@ -1,7 +1,7 @@
 import './CommentForm.scss'
 import axios from 'axios'
 
-export default function CommentForm({ photoId, apiKey }) {
+export default function CommentForm({ photoId, apiKey, fetchComments }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -14,12 +14,20 @@ export default function CommentForm({ photoId, apiKey }) {
                 comment,
             }
             const url = `https://unit-3-project-c5faaab51857.herokuapp.com/photos/${photoId}/comments?api_key=${apiKey}`
-            const response = await axios.post(url, newComment)
-            console.log(response)
+            
+            try {
+                const response = await axios.post(url, newComment)
+                if (response.status == 201) {
+                    fetchComments()
+                }
+                else {
+                    console.log(`POST-ing new comment status: ${response.status}`)
+                }
+            } catch (err) {
+                console.log(`Error POST-ing new comment: ${err}`)
+            }
             formElem.reset()
         }
-
-        // TODO!!! USE API TO POST NEW COMMENTS AND DISPLAY ALL COMMENTS
     }
 
     return (

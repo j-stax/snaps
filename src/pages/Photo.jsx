@@ -26,7 +26,15 @@ const dateMap = {
 
 export default function Photo({ apiKey }) {
     const [photo, setPhoto] = useState({})
+    const [comments, setComments] = useState([])
     const { id } = useParams()
+
+    const sessionApiKey = sessionStorage.getItem('key')
+    if (sessionApiKey) {
+        apiKey = sessionApiKey
+    } else {
+        sessionStorage.setItem('key', apiKey)
+    }   
 
     useEffect(() => {
         const fetchPhoto = async () => {
@@ -45,8 +53,20 @@ export default function Photo({ apiKey }) {
         fetchPhoto()
     }, [id])
 
-    // const photoObj = photoData.find(photo => photo.id === id)
-    // const tags = photo.tags.map((tag, index) => <span key={index} className="photo__tag">{tag}</span>)
+    const fetchComments = async () => {
+        try {
+            const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}/comments?api_key=${apiKey}`)
+            if (response.status == 200) {
+                const sortedData = response.data.sort((a, b) => b.timestamp - a.timestamp)
+                setComments(sortedData)
+            } else {
+                console.log(`Fetching comments status: ${response.status}`)
+            }
+        } catch (err) {
+            console.log(`Error fetching comments: ${err}`)
+        }
+    }
+
     function timestampToDate(timestamp) { 
         const date = new Date(timestamp)
         return `${dateMap[date.getMonth()]}\/${date.getDate()}\/${date.getFullYear()}`
@@ -74,8 +94,13 @@ export default function Photo({ apiKey }) {
                             <span className="photo__photographer">Photo by {photo.photographer}</span>
                         </div>
                     </div>
-                    <CommentForm photoId={id} apiKey={apiKey} />
-                    <Comments photoId={id} apiKey={apiKey} timestampToDate={timestampToDate} />
+                    <CommentForm photoId={id} apiKey={apiKey} fetchComments={fetchComments} />
+                    <Comments 
+                        photoId={id} 
+                        timestampToDate={timestampToDate} 
+                        fetchComments={fetchComments}
+                        comments={comments}
+                    />
                 </main>
                 <Footer /> 
             </div>}

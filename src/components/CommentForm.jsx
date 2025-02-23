@@ -23,6 +23,7 @@ export default function CommentForm({ photoId, apiKey, fetchComments }) {
         const comment = inputs.comment.trim()
 
         if (isValid(name) && isValid(comment)) {
+            // New comment object for POST-ing
             const newComment = {
                 name: toTitleCase(name),
                 comment: comment[0].toUpperCase() + comment.slice(1)
@@ -41,7 +42,7 @@ export default function CommentForm({ photoId, apiKey, fetchComments }) {
                 console.log(`Error POST-ing new comment: ${err}`)
             }
 
-            setInputs({ name: "", comment: "" })
+            setInputs({ name: "", comment: "" })    // Reset input fields
         } else {
             alert("Both name and comment are required!")
             nameRef.current.classList.add("form__input-name--invalid")

@@ -1,9 +1,7 @@
 import './Comments.scss'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useEffect } from 'react'
 
 export default function Comments({ photoId, timestampToDate, fetchComments, comments }) {
-    // const [comments, setComments] = useState([])
 
     useEffect(() => {
         fetchComments()

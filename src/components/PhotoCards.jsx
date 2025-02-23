@@ -1,4 +1,3 @@
-import photoData from '../data/photos.json'
 import './PhotoCards.scss'
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'

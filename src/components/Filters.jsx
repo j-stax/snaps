@@ -1,4 +1,3 @@
-import tags from '../data/tags.json'
 import './Filters.scss'
 import FilterTag from './FilterTag'
 import { useState, useEffect } from 'react'

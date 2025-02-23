@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import photoData from '../data/photos.json'
 import './Photo.scss'
 import LikeOutline from '../assets/images/Like_Outline.svg?react'
 import PagesHeader from '../components/PagesHeader'

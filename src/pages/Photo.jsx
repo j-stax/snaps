@@ -88,9 +88,10 @@ export default function Photo({ apiKey }) {
                                     <LikeOutline className="photo__likes-icon" />
                                     <span className="photo__likes-text">{photo.likes} likes</span>
                                 </div>
+                                <span className="photo__photographer photo__photographer--tablet">Photo by {photo.photographer}</span>
                                 <span>{timestampToDate(photo.timestamp)}</span>
                             </div>
-                            <span className="photo__photographer">Photo by {photo.photographer}</span>
+                            <span className="photo__photographer photo__photographer--mobile">Photo by {photo.photographer}</span>
                         </div>
                     </div>
                     <CommentForm photoId={id} apiKey={apiKey} fetchComments={fetchComments} />

@@ -1,8 +1,9 @@
 @use '../styles/partials/variables' as *;
+@use '../styles/partials/mixins' as *;
 
 .photo {
     &__component {
-        border: 1px solid $secondary-color-green;
+        border: 2px solid $secondary-color-green;
         border-radius: 0.5rem;
         margin-bottom: 2rem;
     }
@@ -19,16 +20,25 @@
         background-color: $secondary-color-sage;
         border-bottom-left-radius: 0.5rem;
         border-bottom-right-radius: 0.5rem;
+
+        @include tablet {
+            padding: 2rem 2rem 1.5rem;
+        }
     }
 
     &__tags-container {
         display: flex;
         gap: 0.5rem;
         margin-bottom: 1rem;
+
+        @include tablet {
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
     }
 
     &__tag {
-        border: 1px solid $secondary-color-green;
+        border: 2px solid $secondary-color-green;
         padding: 0.375rem 0.5rem;
         border-radius: 0.375rem;
         background-color: $secondary-color-white;
@@ -42,15 +52,41 @@
         font-size: 1rem;
         font-weight: 500;
         margin-bottom: 0.5rem;
+
+        @include tablet {
+            font-size: 1.25rem;
+        }
     }
 
     &__likes-icon {
         transform: scale(0.9);
         margin-right: 0.25rem;
+
+        @include tablet {
+            transform: scale(1);
+        }
     }
 
     &__photographer {
         font-size: 1rem;
         font-weight: 500;
+
+        @include tablet {
+            font-size: 1.25rem;
+        }
+
+        &--mobile {
+            @include tablet {
+                display: none;
+            }
+        }
+
+        &--tablet {
+            display: none;
+
+            @include tablet {
+                display: inline;
+            }
+        }
     }
 }

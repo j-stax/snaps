@@ -6,6 +6,10 @@
     font-weight: 500;
     margin-bottom: 2rem;
 
+    @include tablet {
+        font-size: 1.25rem;
+    }
+
     &__input-name {
         width: 100%;
         @include formfield;

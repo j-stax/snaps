@@ -2,6 +2,12 @@
 @use '../styles/partials/mixins' as *;
 
 .photo {
+    &__main {
+        @include desktop {
+            padding: 0 12rem;
+        }
+    }
+
     &__component {
         border: 2px solid $secondary-color-green;
         border-radius: 0.5rem;

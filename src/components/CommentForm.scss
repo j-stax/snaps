@@ -19,6 +19,7 @@
         @include tablet {
             padding: 0.5rem 1rem;
             height: 2.5rem;
+            font-size: 1rem;
         }
 
         &:focus {
@@ -38,6 +39,7 @@
 
         @include tablet {
             padding: 0.5rem 1rem;
+            font-size: 1rem;
         }
 
         &:focus {
@@ -60,8 +62,17 @@
         display: block;
         margin-left: auto;
 
+        @include tablet {
+            font-size: 1.25rem;
+            padding: 0.5rem 1.25rem;
+        }
+
         &:hover {
             cursor: pointer;
+        }
+
+        &:active {
+            transform: scale(0.95);
         }
     }
 }

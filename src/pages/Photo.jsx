@@ -75,7 +75,7 @@ export default function Photo({ apiKey }) {
         <>
             {photo && <div className="photo">
                 <PagesHeader />
-                <main>
+                <main className="photo__main">
                     <div className="photo__component">
                         <img className="photo__image" src={photo.photo} alt={photo.photoDescription} />
                         <div className="photo__component-content">

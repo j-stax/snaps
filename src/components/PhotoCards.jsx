@@ -29,9 +29,10 @@ export default function PhotoCards({ isOpen, selectedFilterTag, apiKey }) {
     const filteredData = selectedFilterTag === "" ? photos :
         photos.filter(photoObj => photoObj.tags.includes(selectedFilterTag))
 
-
+    // Keep a check on screen width
     window.addEventListener('resize', () => setScreenWidth(window.innerWidth))
 
+    // Handle resizing while filter drawer is open to maintain correct styling for desktop view
     const photosStyles = screenWidth >= 1280 && isOpen ? "photos photos--filter-open-desktop" : "photos"
     
     // Card component

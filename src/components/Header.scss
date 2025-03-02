@@ -29,24 +29,26 @@
         align-items: center;
         gap: 0.5rem;
 
+        &--dark {
+            cursor: pointer;
+            background-color: $primary-color-green;
+            color: $secondary-color-white;
+        }
+
         @include tablet {
             padding: 0.6rem 1.75rem;
             font-size: 0.9rem;
         }
     }
 
-    &__filter-btn-hovered {
-        cursor: pointer;
-        background-color: $primary-color-green;
-        color: $secondary-color-white;
-    }
-
     &__filter-icon {
         width: 0.9375rem;
         height: 0.6875rem;
-    }
 
-    &__filter-icon-hovered {
-        fill: #FFFFFF;
+        &--light {
+            path {
+                fill: #FFFFFF;
+            }
+        }
     }
 }

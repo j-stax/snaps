@@ -32,11 +32,11 @@ export default function PhotoCards({ isOpen, selectedFilterTag, apiKey }) {
 
     window.addEventListener('resize', () => setScreenWidth(window.innerWidth))
 
-    const photosStyles = screenWidth >= 1280 && isOpen ? "photos photos-desktop" : "photos"
+    const photosStyles = screenWidth >= 1280 && isOpen ? "photos photos--filter-open-desktop" : "photos"
     
     // Card component
     function Card({ photoObj }) {
-        const cardStyles = screenWidth >= 1280 && isOpen ? "card card-desktop" : "card"
+        const cardStyles = screenWidth >= 1280 && isOpen ? "card card--filter-open-desktop" : "card"
 
         return (
             <Link to={`/photo/${photoObj.id}`} className={cardStyles}>

@@ -17,10 +17,28 @@ body {
 
     @include tablet {
         font-size: 1.25rem;
+        padding: 1rem 1.5rem;
     }
 
     @include desktop {
-        padding: 1rem 1.5rem;
         overflow-x: hidden;
+    }
+}
+
+.home {
+    &__main {
+        margin-bottom: 5rem;
+
+        @include tablet {
+            margin-bottom: 7rem;
+        }
+
+        @include desktop {
+            margin-bottom: 6rem;
+        }
+
+        @include desktop {
+            position: relative;
+        }
     }
 }

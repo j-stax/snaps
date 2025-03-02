@@ -2,7 +2,6 @@
 @use '../styles/partials/mixins' as *;
 
 .photos {
-    margin-bottom: 4rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -15,15 +14,10 @@
         justify-content: space-between;
     }
 
-    @include desktop {
-        margin-bottom: 5rem;
+    &--filter-open-desktop {
+        width: 65%;
+        padding-bottom: 3rem;
     }
-}
-
-.photos-desktop {
-    width: 65%;
-    margin-bottom: 7rem;
-
 }
 
 .card {
@@ -34,12 +28,16 @@
     text-decoration: none;
 
     @include tablet {
-        flex: 0 1 48%;
+        flex: 0 1 48.5%;
         border-radius: 0.75rem;
     }
 
     @include desktop {
         flex: 0 1 32%;
+    }
+
+    &--filter-open-desktop {
+        flex-basis: 48%;
     }
 
     &__image-container {
@@ -94,8 +92,4 @@
             border-radius: 0.75rem;
         }
     }
-}
-
-.card-desktop {
-    flex-basis: 48%;
 }

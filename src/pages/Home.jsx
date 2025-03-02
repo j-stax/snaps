@@ -16,18 +16,20 @@ export default function Home({ apiKey }) {
     return (
         <>
             <Header toggle={toggleFilters} isOpen={isFiltersOpen} />
-            {isFiltersOpen && <Filters 
-                selectedTag={selectedFilterTag}
-                setSelectedTag={setSelectedFilterTag} 
-                apiKey={apiKey}
-            />
-            }
-            <Hero />
-            <PhotoCards 
-                isOpen={isFiltersOpen}
-                selectedFilterTag={selectedFilterTag} 
-                apiKey={apiKey}
-            />
+            <div className="home__main">
+                {isFiltersOpen && <Filters 
+                    selectedTag={selectedFilterTag}
+                    setSelectedTag={setSelectedFilterTag} 
+                    apiKey={apiKey}
+                />
+                }
+                <Hero />
+                <PhotoCards 
+                    isOpen={isFiltersOpen}
+                    selectedFilterTag={selectedFilterTag} 
+                    apiKey={apiKey}
+                />
+            </div>
             <Footer />
         </>
     )

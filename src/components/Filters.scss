@@ -8,14 +8,16 @@
 
     @include tablet {
         padding: 2rem 1rem 5rem;
+        margin: 0 -1.5rem;
     }
 
     @include desktop {
+        margin: 0 -1.5rem 0 0;
         position: absolute;
         right: 0;
         width: 35%;
-        height: 320rem;
-        padding: 3rem 3.25rem 2rem 3.5rem;
+        height: 100%;
+        padding: 3rem 3.25rem 0 3.5rem;
     }
 
     &__heading {

@@ -2,7 +2,7 @@ import './CommentForm.scss'
 import axios from 'axios'
 import { useState, useRef } from 'react'
 
-export default function CommentForm({ photoId, apiKey, fetchComments }) {
+export default function CommentForm({ photoId, fetchComments }) {
     const [inputs, setInputs] = useState({ name: "", comment: "" })
     const nameRef = useRef(null)
     const commentRef = useRef(null)
@@ -29,7 +29,7 @@ export default function CommentForm({ photoId, apiKey, fetchComments }) {
                 comment: comment[0].toUpperCase() + comment.slice(1)
             }
 
-            const url = `https://unit-3-project-c5faaab51857.herokuapp.com/photos/${photoId}/comments?api_key=${apiKey}`
+            const url = `https://unit-3-project-c5faaab51857.herokuapp.com/photos/${photoId}/comments?api_key=${sessionStorage.getItem('API_KEY')}`
             try {
                 const response = await axios.post(url, newComment)
                 if (response.status == 201) {

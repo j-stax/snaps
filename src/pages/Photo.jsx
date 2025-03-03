@@ -23,22 +23,16 @@ const dateMap = {
     11: "12",
 }
 
-export default function Photo({ apiKey }) {
+export default function Photo() {
     const [photo, setPhoto] = useState({})
     const [comments, setComments] = useState([])
     const { id } = useParams()
-
-    const sessionApiKey = sessionStorage.getItem('key')
-    if (sessionApiKey) {
-        apiKey = sessionApiKey
-    } else {
-        sessionStorage.setItem('key', apiKey)
-    }   
+    const API_KEY = sessionStorage.getItem('API_KEY')
 
     useEffect(() => {
         const fetchPhoto = async () => {
             try {
-                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}?api_key=${apiKey}`)
+                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}?api_key=${API_KEY}`)
                 if (response.status == 200) {
                     setPhoto(response.data)
                 } else {
@@ -54,7 +48,7 @@ export default function Photo({ apiKey }) {
 
     const fetchComments = async () => {
         try {
-            const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}/comments?api_key=${apiKey}`)
+            const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}/comments?api_key=${API_KEY}`)
             if (response.status == 200) {
                 const sortedData = response.data.sort((a, b) => b.timestamp - a.timestamp)
                 setComments(sortedData)
@@ -94,7 +88,7 @@ export default function Photo({ apiKey }) {
                             <span className="photo__photographer photo__photographer--mobile">Photo by {photo.photographer}</span>
                         </div>
                     </div>
-                    <CommentForm photoId={id} apiKey={apiKey} fetchComments={fetchComments} />
+                    <CommentForm photoId={id} fetchComments={fetchComments} />
                     <Comments 
                         photoId={id} 
                         timestampToDate={timestampToDate} 

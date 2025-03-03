@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-export default function PhotoCards({ isOpen, selectedFilterTag, apiKey }) {
+export default function PhotoCards({ isOpen, selectedFilterTag }) {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
     const [photos, setPhotos] = useState([])
     const photosRef = useRef(null)  
@@ -11,7 +11,7 @@ export default function PhotoCards({ isOpen, selectedFilterTag, apiKey }) {
     useEffect(() => {
         const fetchPhotos = async () => {
             try {
-                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos?api_key=${apiKey}`)
+                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos?api_key=${sessionStorage.getItem('API_KEY')}`)
                 if (response.status == 200) {
                     setPhotos(response.data)
                 } else {

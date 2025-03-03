@@ -12,7 +12,6 @@ export default function Home({ API_KEY }) {
     useEffect(() => {
         if (!sessionStorage.getItem('API_KEY')) {
             sessionStorage.setItem('API_KEY', API_KEY)
-            console.log("api_key stored.")
         }
     }, [])
 

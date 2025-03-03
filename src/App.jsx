@@ -20,7 +20,6 @@ function App() {
     try {
       const response = await axios.get('https://unit-3-project-c5faaab51857.herokuapp.com/register')
       if (response.status == 200) {
-        console.log(response.data.api_key)
         setAPI_KEY(response.data.api_key)
       } else {
         console.log(`Error registering API key: ${response.status}`)

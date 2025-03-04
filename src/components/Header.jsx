@@ -1,11 +1,16 @@
 import './Header.scss'
 import FilterIcon from '../assets/images/Filter.svg?react'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 
 export default function Header({ toggle, isOpen }) {
     const [isHovered, setIsHovered] = useState(false)
+    const navRef = useRef(null)
+
+    useEffect(() => {
+        navRef.current.scrollIntoView({ behavior: 'smooth' })
+    }, [])
 
     // Handling hover effects 
     function handleMouseOver() {
@@ -23,7 +28,7 @@ export default function Header({ toggle, isOpen }) {
     const filterIconStyles = isHovered ? "header__filter-icon header__filter-icon--light" : "header__filter-icon"
 
     return (
-        <nav className="header">
+        <nav className="header" ref={navRef}>
             <Link className="header__logo" to="/" >Snaps</Link>
             <button 
                 className={buttonStyles}

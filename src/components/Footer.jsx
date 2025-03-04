@@ -3,13 +3,12 @@ import FacebookIcon from '../assets/images/Facebook.svg?react'
 import XIcon from '../assets/images/X_twitter.svg?react'
 import IgIcon from '../assets/images/Instagram.svg?react'
 import PinterestIcon from '../assets/images/Pinterest.svg?react'
-import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
         <footer className="footer">
             <div className="footer__main">
-                <Link className="footer__logo" to="/">Snaps</Link>
+                <a className="footer__logo" href='/'>Snaps</a>
                 <div className="footer__content-wrapper">
                     <div className="footer__text-container">
                         <div className="footer__keywords-container">

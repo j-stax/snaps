@@ -32,7 +32,8 @@ export default function PhotoCards({ isOpen, selectedFilterTag }) {
     // Keep a check on screen width
     window.addEventListener('resize', () => setScreenWidth(window.innerWidth))
 
-    // Handle resizing while filter drawer is open to maintain correct styling for desktop view
+    // Apply correct styling for desktop view while filter drawer is open and screen size changes
+    // between tablet and desktop.
     const photosStyles = screenWidth >= 1280 && isOpen ? "photos photos--filter-open-desktop" : "photos"
     
     // Card component

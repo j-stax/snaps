@@ -1,8 +1,8 @@
-import Header from '../components/Header'
-import Filters from '../components/Filters'
-import Hero from '../components/Hero'
-import PhotoCards from '../components/PhotoCards'
-import Footer from '../components/Footer'
+import Header from '../components/Header/Header'
+import Filters from '../components/Filters/Filters'
+import Hero from '../components/Hero/Hero'
+import PhotoCards from '../components/PhotoCards/PhotoCards'
+import Footer from '../components/Footer/Footer'
 import { useEffect, useState } from 'react'
 
 export default function Home({ API_KEY }) {

@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Arrow from '../assets/images/Arrow.svg?react'
+import Arrow from '../../assets/images/Arrow.svg?react'
 import './PagesHeader.scss'
 
 export default function PagesHeader() {

@@ -1,5 +1,5 @@
 import './Header.scss'
-import FilterIcon from '../assets/images/Filter.svg?react'
+import FilterIcon from '../../assets/images/Filter.svg?react'
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 

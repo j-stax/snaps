@@ -14,7 +14,6 @@
         width: 100%;
         @include formfield;
         height: 2rem;
-        margin-bottom: 1.5rem;
 
         @include tablet {
             padding: 0.5rem 1rem;
@@ -31,11 +30,19 @@
         }
     }
 
+    &__label-comment {
+        display: inline-block;
+        margin-top: 1.5rem;
+
+        @include tablet {
+            margin-top: 1rem;
+        }
+    }
+
     &__input-comment {
         width: 100%;
         resize: none;
         @include formfield;
-        margin-bottom: 1rem;
 
         @include tablet {
             padding: 0.5rem 1rem;
@@ -61,10 +68,12 @@
         font-weight: 500;
         display: block;
         margin-left: auto;
+        margin-top: 1rem;
 
         @include tablet {
             font-size: 1.25rem;
             padding: 0.5rem 1.25rem;
+            margin-top: 0.5rem;
         }
 
         &:hover {
@@ -75,4 +84,24 @@
             transform: scale(0.95);
         }
     }
+
+    &__error-msg {
+        display: block;
+        font-size: 0.8rem;
+        font-style: italic;
+        text-align: center;
+        color: #B10606;
+
+        @include tablet {
+            font-size: 0.9rem;
+        }
+
+        &--name {
+            margin-top: 4px;
+        }
+    }
+}
+
+.hidden {
+    display: none;
 }

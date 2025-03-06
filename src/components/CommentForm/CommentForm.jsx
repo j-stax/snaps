@@ -6,14 +6,18 @@ export default function CommentForm({ photoId, fetchComments }) {
     const [inputs, setInputs] = useState({ name: "", comment: "" })
     const nameRef = useRef(null)
     const commentRef = useRef(null)
+    const nameErrorRef = useRef(null)
+    const commentErrorRef = useRef(null)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
         setInputs({...inputs, [name]: value})
         if (!isValid(value)) {
             event.target.classList.add(`form__input-${name}--invalid`)
+            showErrorMsg(name)
         } else {
             event.target.classList.remove(`form__input-${name}--invalid`)
+            hideErrorMsg(name)
         }
     }
 
@@ -41,12 +45,20 @@ export default function CommentForm({ photoId, fetchComments }) {
             } catch (err) {
                 console.log(`Error POST-ing new comment: ${err}`)
             }
-
             setInputs({ name: "", comment: "" })    // Reset input fields
-        } else {
-            alert("Both name and comment are required!")
+
+        } else if (!isValid(name) && !isValid(comment)) {
             nameRef.current.classList.add("form__input-name--invalid")
             commentRef.current.classList.add("form__input-comment--invalid")
+            showErrorMsg("name")
+            showErrorMsg("comment")
+        }
+        else if (!isValid(name)) {
+            nameRef.current.classList.add("form__input-name--invalid")
+            showErrorMsg("name")
+        } else {
+            commentRef.current.classList.add("form__input-comment--invalid")
+            showErrorMsg("comment")
         }
     }
 
@@ -63,19 +75,36 @@ export default function CommentForm({ photoId, fetchComments }) {
         return modItems.join(" ")
     }
 
+    const showErrorMsg = (inputName) => {
+        if (inputName === "name") {
+            nameErrorRef.current.classList.remove("hidden")
+        } else {
+            commentErrorRef.current.classList.remove("hidden")
+        }
+    }
+
+    const hideErrorMsg = (inputName) => {
+        if (inputName === "name") {
+            nameErrorRef.current.classList.add("hidden")
+        } else {
+            commentErrorRef.current.classList.add("hidden")
+        }
+    } 
+
     return (
         <form className="form" onSubmit={handleSubmit} method="POST">
-            <label className="form__label">Name
-                <input 
-                    ref={nameRef}
-                    onChange={handleInputChange} 
-                    className="form__input-name" 
-                    type="text" 
-                    name="name" 
-                    value={inputs.name} 
-                />
-            </label>
-            <label className="form__label" htmlFor="comment">Comment</label>
+            <label htmlFor="name">Name</label>
+            <input 
+                ref={nameRef}
+                onChange={handleInputChange} 
+                id="name"
+                className="form__input-name" 
+                type="text" 
+                name="name" 
+                value={inputs.name} 
+            />
+            <span ref={nameErrorRef} className="form__error-msg form__error-msg--name hidden">Please enter a name.</span>
+            <label className="form__label-comment" htmlFor="comment">Comment</label>
             <textarea 
                 ref={commentRef}
                 onChange={handleInputChange}
@@ -86,6 +115,7 @@ export default function CommentForm({ photoId, fetchComments }) {
                 rows="4"
                 value={inputs.comment}
             ></textarea>
+            <span ref={commentErrorRef} className="form__error-msg form__error-msg--comment hidden">Please enter a comment.</span>
             <button className="form__button" type="submit">Submit</button>
         </form>
     )

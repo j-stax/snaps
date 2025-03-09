@@ -1,0 +1,32 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.comments {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 6rem;
+
+    @include tablet {
+        font-size: 1.25rem;
+    }
+
+    &__ruler {
+        border: 1px solid $secondary-color-green;
+        margin-block: 1rem;
+    }
+
+    &__component-header {
+        font-size: 0.75rem;
+        color: $primary-color-green;
+        display: flex;
+        justify-content: space-between;
+
+        @include tablet {
+            font-size: 1rem;
+        }
+    }
+
+    &__comment {
+        margin-bottom: 1rem;
+    }
+}

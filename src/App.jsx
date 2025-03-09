@@ -1,34 +1,41 @@
 import './App.scss'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import PhotoCards from './components/PhotoCards'
-import Footer from './components/Footer'
-import Filters from './components/Filters'
-import { useState } from "react"
+import Home from './pages/Home'
+import Photo from './pages/Photo'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 function App() {
-  const [isFiltersOpen, setIsFiltersOpen] = useState(false)
-  const [selectedFilterTag, setSelectedFilterTag] = useState("")
+  const [API_KEY, setAPI_KEY] = useState("")
 
-  function toggleFilters() {
-    setIsFiltersOpen(prev => !prev)
+  useEffect(() => {
+    if (!sessionStorage.getItem('API_KEY')) {
+      getApiKey()
+    } else {
+      setAPI_KEY(sessionStorage.getItem('API_KEY'))
+    }
+  }, [])
+
+  const getApiKey = async () => {
+    try {
+      const response = await axios.get('https://unit-3-project-c5faaab51857.herokuapp.com/register')
+      if (response.status == 200) {
+        setAPI_KEY(response.data.api_key)
+      } else {
+        console.log(`Error registering API key: ${response.status}`)
+      }
+    } catch (err) {
+      console.log(`Error registering API key: ${err}`)
+    }  
   }
 
   return (
-    <>
-      <Header toggle={toggleFilters} isOpen={isFiltersOpen} />
-      {isFiltersOpen && <Filters 
-          selectedTag={selectedFilterTag}
-          setSelectedTag={setSelectedFilterTag} 
-        />
-      }
-      <Hero />
-      <PhotoCards 
-        isOpen={isFiltersOpen}
-        selectedFilterTag={selectedFilterTag} 
-      />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={API_KEY && <Home API_KEY={API_KEY} />} />
+        <Route path="/photo/:id" element={<Photo />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

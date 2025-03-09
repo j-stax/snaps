@@ -1,0 +1,40 @@
+import Header from '../components/Header/Header'
+import Filters from '../components/Filters/Filters'
+import Hero from '../components/Hero/Hero'
+import PhotoCards from '../components/PhotoCards/PhotoCards'
+import Footer from '../components/Footer/Footer'
+import { useEffect, useState } from 'react'
+
+export default function Home({ API_KEY }) {
+    const [isFiltersOpen, setIsFiltersOpen] = useState(false)
+    const [selectedFilterTag, setSelectedFilterTag] = useState("")
+    
+    useEffect(() => {
+        if (!sessionStorage.getItem('API_KEY')) {
+            sessionStorage.setItem('API_KEY', API_KEY)
+        }
+    }, [])
+
+    function toggleFilters() {
+        setIsFiltersOpen(prev => !prev)
+    }
+
+    return (
+        <>
+            <Header toggle={toggleFilters} isOpen={isFiltersOpen} />
+            <div className="home__main">
+                {isFiltersOpen && <Filters 
+                    selectedTag={selectedFilterTag}
+                    setSelectedTag={setSelectedFilterTag} 
+                />
+                }
+                <Hero />
+                <PhotoCards 
+                    isOpen={isFiltersOpen}
+                    selectedFilterTag={selectedFilterTag}
+                />
+            </div>
+            <Footer />
+        </>
+    )
+}

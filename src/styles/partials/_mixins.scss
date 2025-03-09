@@ -20,3 +20,12 @@
     text-decoration: none;
     color: $primary-color-black;
 }
+
+@mixin formfield {
+    padding: 0.5rem;
+    border: 2px solid $secondary-color-green;
+    border-radius: 0.5rem;
+    outline: none;
+    margin-top: 0.5rem;
+    font-family: 'Outfit';
+}

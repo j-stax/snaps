@@ -5,8 +5,7 @@ import axios from 'axios'
 
 export default function PhotoCards({ isOpen, selectedFilterTag }) {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-    const [photos, setPhotos] = useState([])
-    const photosRef = useRef(null)  
+    const [photos, setPhotos] = useState([]) 
 
     useEffect(() => {
         const fetchPhotos = async () => {
@@ -56,7 +55,7 @@ export default function PhotoCards({ isOpen, selectedFilterTag }) {
     }
 
     return (
-        <section ref={photosRef} className={photosStyles}>
+        <section className={photosStyles}>
             {filteredData.map(photoObj => 
                 <Card key={photoObj.id} photoObj={photoObj} />
             )}

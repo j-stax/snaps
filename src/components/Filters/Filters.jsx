@@ -3,13 +3,16 @@ import FilterTag from './FilterTag'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+const API_URL = import.meta.env.VITE_APP_API_URL
+
 export default function Filters({ selectedTag, setSelectedTag }) {
     const [tags, setTags] = useState([])
 
     useEffect(() => {
         const fetchTags = async () => {
             try {
-                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/tags?api_key=${sessionStorage.getItem('API_KEY')}`)
+                // const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/tags?api_key=${sessionStorage.getItem('API_KEY')}`)
+                const response = await axios.get(`${API_URL}/tags`)
                 if (response.status == 200) {
                     setTags(response.data)
                 } else {

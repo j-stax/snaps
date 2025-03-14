@@ -23,16 +23,17 @@ const dateMap = {
     11: "12",
 }
 
+const API_URL = import.meta.env.VITE_APP_API_URL
+
 export default function Photo() {
     const [photo, setPhoto] = useState({})
     const [comments, setComments] = useState([])
     const { id } = useParams()
-    const API_KEY = sessionStorage.getItem('API_KEY')
 
     useEffect(() => {
         const fetchPhoto = async () => {
             try {
-                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}?api_key=${API_KEY}`)
+                const response = await axios.get(`${API_URL}/photos/${id}`)
                 if (response.status == 200) {
                     setPhoto(response.data)
                 } else {
@@ -48,7 +49,8 @@ export default function Photo() {
 
     const fetchComments = async () => {
         try {
-            const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}/comments?api_key=${API_KEY}`)
+            // const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos/${id}/comments?api_key=${API_KEY}`)
+            const response = await axios.get(`${API_URL}/photos/${id}/comments`)
             if (response.status == 200) {
                 const sortedData = response.data.sort((a, b) => b.timestamp - a.timestamp)
                 setComments(sortedData)

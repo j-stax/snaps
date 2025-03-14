@@ -11,7 +11,6 @@ export default function Filters({ selectedTag, setSelectedTag }) {
     useEffect(() => {
         const fetchTags = async () => {
             try {
-                // const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/tags?api_key=${sessionStorage.getItem('API_KEY')}`)
                 const response = await axios.get(`${API_URL}/tags`)
                 if (response.status == 200) {
                     setTags(response.data)

@@ -14,7 +14,7 @@ export default function CommentForm({ photoId, fetchComments }) {
     const handleInputChange = (event) => {
         const { name, value } = event.target
         setInputs({...inputs, [name]: value})
-        if (!isValid(value)) {
+        if (!value) {
             event.target.classList.add(`form__input-${name}--invalid`)
             showErrorMsg(name)
         } else {
@@ -28,7 +28,7 @@ export default function CommentForm({ photoId, fetchComments }) {
         const name = inputs.name.trim()
         const comment = inputs.comment.trim()
 
-        if (isValid(name) && isValid(comment)) {
+        if (name && comment) {
             // New comment object
             const newComment = {
                 name: toTitleCase(name),
@@ -41,7 +41,7 @@ export default function CommentForm({ photoId, fetchComments }) {
                     // Reload comments to reflect newly added comment, with delay to avoid server write/read file conflict
                     setTimeout(() => {
                         fetchComments()
-                    }, 1000)
+                    }, 900)
                 }
                 else {
                     console.log(`POST request for new comment returned status code ${response.status}`)
@@ -51,23 +51,19 @@ export default function CommentForm({ photoId, fetchComments }) {
             }
             setInputs({ name: "", comment: "" })    // Reset input fields
 
-        } else if (!isValid(name) && !isValid(comment)) {
+        } else if (!name && !comment) {
             nameRef.current.classList.add("form__input-name--invalid")
             commentRef.current.classList.add("form__input-comment--invalid")
             showErrorMsg("name")
             showErrorMsg("comment")
         }
-        else if (!isValid(name)) {
+        else if (!name) {
             nameRef.current.classList.add("form__input-name--invalid")
             showErrorMsg("name")
         } else {
             commentRef.current.classList.add("form__input-comment--invalid")
             showErrorMsg("comment")
         }
-    }
-
-    const isValid = (value) => {
-        return value.length > 0
     }
 
     const toTitleCase = (str) => {

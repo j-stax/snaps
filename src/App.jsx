@@ -1,6 +1,6 @@
 import './App.scss'
 import Home from './pages/Home'
-import Photo from './pages/Photo'
+import Photo from './pages/Photo/Photo'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {

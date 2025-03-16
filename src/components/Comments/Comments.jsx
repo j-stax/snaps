@@ -1,5 +1,4 @@
 import './Comments.scss'
-import { useEffect } from 'react'
 
 export default function Comments({ timestampToDate, comments }) {
     return (

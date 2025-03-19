@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+const API_URL = import.meta.env.VITE_APP_API_URL
+
 export default function PhotoCards({ isOpen, selectedFilterTag }) {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
     const [photos, setPhotos] = useState([]) 
@@ -10,7 +12,7 @@ export default function PhotoCards({ isOpen, selectedFilterTag }) {
     useEffect(() => {
         const fetchPhotos = async () => {
             try {
-                const response = await axios.get(`https://unit-3-project-c5faaab51857.herokuapp.com/photos?api_key=${sessionStorage.getItem('API_KEY')}`)
+                const response = await axios.get(`${API_URL}/photos`)
                 if (response.status == 200) {
                     setPhotos(response.data)
                 } else {

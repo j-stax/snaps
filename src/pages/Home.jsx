@@ -3,17 +3,11 @@ import Filters from '../components/Filters/Filters'
 import Hero from '../components/Hero/Hero'
 import PhotoCards from '../components/PhotoCards/PhotoCards'
 import Footer from '../components/Footer/Footer'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-export default function Home({ API_KEY }) {
+export default function Home() {
     const [isFiltersOpen, setIsFiltersOpen] = useState(false)
     const [selectedFilterTag, setSelectedFilterTag] = useState("")
-    
-    useEffect(() => {
-        if (!sessionStorage.getItem('API_KEY')) {
-            sessionStorage.setItem('API_KEY', API_KEY)
-        }
-    }, [])
 
     function toggleFilters() {
         setIsFiltersOpen(prev => !prev)

@@ -2,6 +2,8 @@ import './CommentForm.scss'
 import axios from 'axios'
 import { useState, useRef } from 'react'
 
+const API_URL = import.meta.env.VITE_APP_API_URL
+
 export default function CommentForm({ photoId, fetchComments }) {
     const [inputs, setInputs] = useState({ name: "", comment: "" })
     const nameRef = useRef(null)
@@ -12,7 +14,7 @@ export default function CommentForm({ photoId, fetchComments }) {
     const handleInputChange = (event) => {
         const { name, value } = event.target
         setInputs({...inputs, [name]: value})
-        if (!isValid(value)) {
+        if (!value) {
             event.target.classList.add(`form__input-${name}--invalid`)
             showErrorMsg(name)
         } else {
@@ -26,47 +28,42 @@ export default function CommentForm({ photoId, fetchComments }) {
         const name = inputs.name.trim()
         const comment = inputs.comment.trim()
 
-        if (isValid(name) && isValid(comment)) {
-            // New comment object for POST-ing
+        if (name && comment) {
+            // New comment object
             const newComment = {
                 name: toTitleCase(name),
                 comment: comment[0].toUpperCase() + comment.slice(1)
             }
 
-            const url = `https://unit-3-project-c5faaab51857.herokuapp.com/photos/${photoId}/comments?api_key=${sessionStorage.getItem('API_KEY')}`
             try {
-                const response = await axios.post(url, newComment)
+                const response = await axios.post(`${API_URL}/photos/${photoId}/comments`, newComment)
                 if (response.status == 201) {
-                    fetchComments()
+                    // Reload comments to reflect newly added comment, with delay to avoid server write/read file conflict
+                    setTimeout(() => {
+                        fetchComments()
+                    }, 900)
                 }
                 else {
-                    console.log(`POST-ing new comment status: ${response.status}`)
+                    console.log(`POST request for new comment returned status code ${response.status}`)
                 }
             } catch (err) {
                 console.log(`Error POST-ing new comment: ${err}`)
             }
             setInputs({ name: "", comment: "" })    // Reset input fields
 
-        } else if (!isValid(name) && !isValid(comment)) {
+        } else if (!name && !comment) {
             nameRef.current.classList.add("form__input-name--invalid")
             commentRef.current.classList.add("form__input-comment--invalid")
             showErrorMsg("name")
             showErrorMsg("comment")
         }
-        else if (!isValid(name)) {
+        else if (!name) {
             nameRef.current.classList.add("form__input-name--invalid")
             showErrorMsg("name")
         } else {
             commentRef.current.classList.add("form__input-comment--invalid")
             showErrorMsg("comment")
         }
-    }
-
-    const isValid = (value) => {
-        if (!value) {
-            return false
-        }
-        return true
     }
 
     const toTitleCase = (str) => {

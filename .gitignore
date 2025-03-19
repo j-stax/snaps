@@ -26,3 +26,6 @@ dist-ssr
 # css files
 *.css.map
 *.css
+
+# .env file
+.env

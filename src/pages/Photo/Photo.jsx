@@ -94,7 +94,6 @@ export default function Photo() {
                     <Comments 
                         photoId={id} 
                         timestampToDate={timestampToDate} 
-                        // fetchComments={fetchComments}
                         comments={comments}
                     />
                 </main>

@@ -3,7 +3,7 @@ import FilterTag from './FilterTag'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const API_URL = import.meta.env.VITE_APP_API_URL
+const API_URL = import.meta.env.VITE_APP_API_URL || "https://snapsapi.netlify.app"
 
 export default function Filters({ selectedTag, setSelectedTag }) {
     const [tags, setTags] = useState([])

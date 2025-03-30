@@ -2,7 +2,7 @@ import './CommentForm.scss'
 import axios from 'axios'
 import { useState, useRef } from 'react'
 
-const API_URL = import.meta.env.VITE_APP_API_URL
+const API_URL = import.meta.env.VITE_APP_API_URL || "https://snapsapi.netlify.app"
 
 export default function CommentForm({ photoId, fetchComments }) {
     const [inputs, setInputs] = useState({ name: "", comment: "" })

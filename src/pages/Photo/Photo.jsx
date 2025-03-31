@@ -35,7 +35,6 @@ export default function Photo() {
         const fetchPhoto = async () => {
             try {
                 const response = await axios.get(`${API_URL}/photos/${photoId}`)
-                console.log(`${API_URL}/photos/${photoId} called}`)
                 if (response.status == 200) {
                     setPhoto(response.data)
                 } else {

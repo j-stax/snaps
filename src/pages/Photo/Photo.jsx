@@ -46,7 +46,7 @@ export default function Photo() {
 
         fetchPhoto()
         fetchComments()
-    }, [id])
+    }, [])
 
     const fetchComments = async () => {
         try {

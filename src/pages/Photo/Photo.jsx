@@ -29,18 +29,20 @@ export default function Photo() {
     const [photo, setPhoto] = useState({})
     const [comments, setComments] = useState([])
     const { id } = useParams()
+    const [photoId, setPhotoId] = useState(id)
 
     useEffect(() => {
         const fetchPhoto = async () => {
             try {
-                const response = await axios.get(`${API_URL}/photos/${id}`)
+                const response = await axios.get(`${API_URL}/photos/${photoId}`)
+                console.log(`${API_URL}/photos/${photoId} called}`)
                 if (response.status == 200) {
                     setPhoto(response.data)
                 } else {
                     console.log(`Fetching photo status: ${response.status}`)
                 }
             } catch (err) {
-                console.log(`Error fetching photo ${id}: ${err}`)
+                console.log(`Error fetching photo ${photoId}: ${err}`)
             }    
         }
 
@@ -50,7 +52,7 @@ export default function Photo() {
 
     const fetchComments = async () => {
         try {
-            const response = await axios.get(`${API_URL}/photos/${id}/comments`)
+            const response = await axios.get(`${API_URL}/photos/${photoId}/comments`)
             if (response.status == 200) {
                 const sortedData = response.data.sort((a, b) => b.timestamp - a.timestamp)
                 setComments(sortedData)
@@ -90,9 +92,9 @@ export default function Photo() {
                             <span className="photo__photographer photo__photographer--mobile">Photo by {photo.photographer}</span>
                         </div>
                     </div>
-                    <CommentForm photoId={id} fetchComments={fetchComments} />
+                    <CommentForm photoId={photoId} fetchComments={fetchComments} />
                     <Comments 
-                        photoId={id} 
+                        photoId={photoId} 
                         timestampToDate={timestampToDate} 
                         comments={comments}
                     />

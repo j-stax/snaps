@@ -42,7 +42,7 @@ export default function PhotoCards({ isOpen, selectedFilterTag }) {
         const cardStyles = screenWidth >= 1280 && isOpen ? "card card--filter-open-desktop" : "card"
 
         return (
-            <Link to={`/photo/${photoObj.id}`} className={cardStyles}>
+            <Link to={`/photos/${photoObj.id}`} className={cardStyles}>
                 <div className="card__image-container">
                     <img className="card__image" src={photoObj.photo} alt={photoObj.photoDescription} />
                     <span className="card__photographer">{photoObj.photographer}</span>

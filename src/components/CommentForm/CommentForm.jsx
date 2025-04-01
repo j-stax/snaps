@@ -36,9 +36,7 @@ export default function CommentForm({ photoId, fetchComments }) {
             }
 
             try {
-                const response = await axios.post(`${API_URL}/photos/${photoId}/comments`, newComment, {
-                    withCredentials: true,
-                })
+                const response = await axios.post(`${API_URL}/photos/${photoId}/comments`, newComment)
                 console.log(response)
                 if (response.status == 201) {
                     // Reload comments to reflect newly added comment, with delay to avoid server write/read file conflict

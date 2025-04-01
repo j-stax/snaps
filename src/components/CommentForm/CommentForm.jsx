@@ -1,6 +1,7 @@
 import './CommentForm.scss'
 import axios from 'axios'
 import { useState, useRef } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 const API_URL = import.meta.env.VITE_APP_API_URL || "https://snapsapi.netlify.app"
 
@@ -32,8 +33,15 @@ export default function CommentForm({ photoId, fetchComments }) {
             // New comment object
             const newComment = {
                 name: toTitleCase(name),
-                comment: comment[0].toUpperCase() + comment.slice(1)
+                comment: comment[0].toUpperCase() + comment.slice(1),
+                id: uuidv4(),
+                timestamp: Date.now()
             }
+
+            // Store extra comments in 
+            const extraComments = JSON.parse(sessionStorage.getItem(photoId)) || []
+            extraComments.push(newComment)
+            sessionStorage.setItem(photoId, JSON.stringify(extraComments))
 
             try {
                 const response = await axios.post(`${API_URL}/photos/${photoId}/comments`, newComment, {

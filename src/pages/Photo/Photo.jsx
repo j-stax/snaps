@@ -52,9 +52,15 @@ export default function Photo() {
     const fetchComments = async () => {
         try {
             const response = await axios.get(`${API_URL}/photos/${photoId}/comments`)
-            if (response.status == 200) {
-                const sortedData = response.data.sort((a, b) => b.timestamp - a.timestamp)
-                setComments(sortedData)
+            if (response.status == 200) {response
+                let comments = response.data
+                if (photoId in sessionStorage) {
+                    // Combine with session stored extra comments
+                    const sessionComments = JSON.parse(sessionStorage.getItem(photoId))
+                    comments = [...comments, ...sessionComments]
+                }             
+                const sortedComments = comments.sort((a, b) => b.timestamp - a.timestamp)
+                setComments(sortedComments)
             } else {
                 console.log(`Fetching comments status: ${response.status}`)
             }
@@ -91,7 +97,10 @@ export default function Photo() {
                             <span className="photo__photographer photo__photographer--mobile">Photo by {photo.photographer}</span>
                         </div>
                     </div>
-                    <CommentForm photoId={photoId} fetchComments={fetchComments} />
+                    <CommentForm 
+                        photoId={photoId} 
+                        fetchComments={fetchComments} 
+                    />
                     <Comments 
                         photoId={photoId} 
                         timestampToDate={timestampToDate} 
